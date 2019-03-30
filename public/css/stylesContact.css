@@ -1,0 +1,77 @@
+.mesContacts{
+    
+    background-color: rgba(0, 0, 0, 75%);
+    display: grid;
+}
+
+.logo{
+    margin: auto;
+    width: 70%;
+}
+
+.infoPerso{
+    margin:5px;
+    margin-top: 10px;
+    padding: 10px;
+    color: #bfdbf7;
+    font-size: 1.3em;
+}
+
+.courriel, .description{
+    margin-top:10px;
+}
+
+.description{
+    text-align: justify;
+}
+
+@media only screen and (min-width: 917px){
+
+    .box-global{
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .mesContacts{
+        margin-left: 200px;
+        margin-top: 65px;
+        width: 950px;
+        height: 65%;
+        padding-left: 100px;
+        padding-right: 100px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .logo{
+        width: 300px
+    }
+
+    .infoPerso{
+        margin-left: 50px;
+        align-self: center;
+        margin: 30px;
+        height: 350px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width:916px){
+    .mesContacts{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .logo{
+        width: 300px
+    }
+
+    .infoPerso{
+        height: 500px;
+    }
+}

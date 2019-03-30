@@ -1,0 +1,365 @@
+/* ================================================================================================================================================================== */
+/* ============================================================================= GÉNÉRAL ============================================================================ */
+
+body
+{
+    margin: 0 auto;
+	max-width: 100vw;
+    min-height: 100vh;   
+
+	/*Conteneur flex en colonne*/
+	display: flex;
+	flex-direction: column;
+
+    /*Décoration générale*/
+    background-image: url('../medias/img/background_01.png');
+    background-repeat: no-repeat;
+}
+
+.box-global
+{
+    max-width: 100vw;
+
+    /*Conteneur flex en rangée*/
+    display: flex;
+    /*Propriété comme item flex*/
+    flex: 1 0 100%;
+    
+    
+    font-family: 'Poiret One', cursive;
+
+    /*Animations et transitions*/
+    transform: translateX(-100%); /*Poussée vers la gauche pour ne pas voir le menu*/
+    transition: transform 1s; /*Effet de transition sur la transformation*/
+}
+  
+.contenu
+{
+    display: grid;
+    grid-gap: 1em;
+    grid-template-areas:
+    "header"
+    "imageLogo"
+    "raccourcis"
+    "footer";
+    
+    /*Propriété comme item flex - ne peut rétrécir*/
+    flex: 1 0 100%;
+    
+    /*Décoration générale*/
+}
+  
+.box
+{
+    font-size: 150%; 
+}
+ 
+.header, .footer
+{
+    color: #bfdbf7;
+    margin: 0 5px;
+}
+
+.footer
+{
+    font-size: 1em;
+    text-align: center;
+}
+
+/* ================================================================================================================================================================== */
+/* =========================================================================== LOGO =========================================================================== */
+
+
+.imgLogo
+{
+    width: 3em;
+}
+
+/* ================================================================================================================================================================== */
+/* =========================================================================== RACCOURCIS =========================================================================== */
+  
+.raccourcis
+{
+    display: grid;
+    margin: 0 5px;
+}
+
+.box-oeuvres, .box-contact
+{
+    margin-top:10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    height: 7vh;
+
+    background-color: rgba(0, 0, 0, 0.75);
+    border: 15px solid #bfdbf7;
+}
+
+.box-oeuvres > a, .box-contact > a
+{
+    text-decoration: none;
+    color: #bfdbf7;
+}
+
+/* ======================= PASSE PAR-DESSUS LES BOX ======================= */
+
+.box-oeuvres:hover, .box-contact:hover
+{
+    background-color: #041e2e;
+    
+}
+
+.box-oeuvres > a:hover, .box-contact > a:hover
+{
+    font-size: 1.3em;
+    color: #bfdbf7;
+}
+
+/* ================================================================================================================================================================== */
+/* ============================================================================ GRID AREA =========================================================================== */
+
+.imageLogo
+{
+    grid-area: imageLogo;
+}
+  
+.raccourcis
+{
+    grid-area: raccourcis;
+}
+  
+.header
+{
+    grid-area: header;
+}
+  
+.footer {
+    grid-area: footer;
+}
+
+/* ================================================================================================================================================================== */
+/* ============================================================================== MENU ============================================================================== */
+.boutonBurger
+{
+    background: linear-gradient(to bottom, #bfdbf7 0%, #bfdbf7 20%, transparent 20%, transparent 40%, #bfdbf7 40%, #bfdbf7 60%, transparent 60%, transparent 80%, #bfdbf7 80%, #bfdbf7 100%);
+    height: 50px;
+    width: 50px;
+    margin: 1%;
+    display: inline-block;
+    cursor: pointer;
+
+    /*Animations et transitions*/
+    transition: transform 1.5s;
+}
+
+.box-menu
+{
+    background-color: #041e2e;
+    text-align: center;
+    width: 100vw;
+    /*Propriété comme item flex - ne peut rétrécir*/
+    flex: 1 0 100%;
+    /*Contexte flex en colonne pour ses enfants*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-x: hidden; overflow-y: auto;
+}
+
+.box-menu a
+{
+    text-decoration: none;
+    color: #bfdbf7;
+    border-bottom: 1px solid #bfdbf7;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+}
+
+
+.box-menu a:first-child
+{
+    border-top: 1px solid #bfdbf7;
+}
+
+#chkBoutonBurger:checked~.box-global
+{
+    transform: translateX(0%);
+}
+
+#chkBoutonBurger:checked~.boutonBurger
+{
+    transform: rotate(90deg);
+}
+
+#chkBoutonBurger
+{
+    display: none;
+}
+
+/* ================================================================================================================================================================== */
+/* ========================================================================= VUE ORDINATEUR ========================================================================= */
+
+  @media only screen and (min-width: 917px)   {
+    
+    
+    .contenu
+    {
+        grid-gap: 20px;
+        grid-template-columns: 120px auto 120px;
+        grid-template-areas:
+        "header  header  header"
+        "imageLogo content raccourcis"
+        "footer  footer  footer";
+        max-width: 100vw;
+    }
+
+    .header
+    {
+        grid-area: 2/2/3/4;
+    }
+
+    .raccourcis
+    {
+        grid-area: 3/1/4/4;
+        justify-content: space-around;
+    }
+
+
+    .box-oeuvres
+    {
+        grid-area: 2/1/2/2;
+    }
+
+    .box-contact
+    {
+        grid-area: 2/2/3/4;
+    }
+
+    .box-oeuvres, .box-contact
+    {
+        margin:15px;
+        width: 12em;;
+        padding-top: 20vh;
+        text-align: center;
+
+        font-size: 2em;
+    }
+
+    .footer
+    {
+        grid-area: 5/1/5/4;
+        text-align: center;
+        font-size: 0.8em;
+    }
+
+    .box-global
+    {
+        /*Placer à sa potition d'origine*/
+        transform: translateX(0%);
+        /*Mettre le contenu en colonne*/				
+        flex-direction: column;
+    }
+
+    .imgLogo
+{
+    width: 4em;
+}
+
+
+/* ======================= MENU ======================= */
+
+    .boutonBurger
+    {
+        display: none;
+    }
+
+    .box-menu
+    {
+        width: 100%;
+        /*Propriété comme item flex - ne peut s'étirer en hauteur*/
+        flex: 0 0 auto;
+        background-color: rgba(0, 0, 0, 0.75);
+    
+        /*Affichage du menu en rangée*/
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .box-menu a
+    {
+        border: none;
+        border-bottom:none;
+        /*Propriété comme item flex - peut s'étirer en largeur*/
+        flex: 1 0 auto;
+    }
+
+    .box-menu a:hover{
+        background-color: #041e2e;
+    }
+
+    .box-menu a:first-child
+    {
+        border-top: none;
+        text-align: start;
+        width: 75%;
+    }
+
+}
+
+/* ================================================================================================================================================================== */
+/* ========================================================================== VUE TABLETTE ========================================================================== */
+
+@media only screen and (min-width: 768px) and (max-width:916px) {
+
+    .contenu
+    {
+        grid-template-columns: 20% auto;
+        grid-template-areas:
+        "header   header"
+        "imageLogo  content"
+        "raccourcis raccourcis"
+        "footer   footer";
+    }
+
+    .box-global
+    {
+        /*Placer à sa potition d'origine*/
+        transform: translateX(0%);
+        /*Mettre le contenu en colonne*/				
+        flex-direction: column;
+    }
+
+/* ======================= MENU ======================= */
+
+    .boutonBurger
+    {
+        display: none;
+    }
+
+    .box-menu
+    {
+        /*Propriété comme item flex - ne peut s'étirer en hauteur*/
+        flex: 0 0 100%;
+        border: none;
+
+        /*Affichage du menu en rangée*/
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .box-menu a
+    {
+        /*Propriété comme item flex - peut s'étirer en largeur*/
+        border-bottom:none;
+        flex: 1 0 auto;
+        text-align: end;
+    }
+
+    .box-menu a:first-child
+    {
+        border-top: none;
+        text-align: start;
+    }
+}
+
+/* ================================================================================================================================================================== */
