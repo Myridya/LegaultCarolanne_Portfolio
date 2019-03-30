@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        
+             
         <script>
             (function() { //IIFE
                 var leCheckBox = document.querySelector("input");
